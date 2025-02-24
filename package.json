@@ -1,0 +1,23 @@
+{
+  "name": "chartdown",
+  "version": "0.1.0",
+  "description": "Convert markdown with chart definitions into interactive visualizations using Plotly.js",
+  "main": "src/ChartdownConverter.js",
+  "scripts": {
+    "start": "python -m http.server 8000",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "markdown",
+    "charts",
+    "plotly",
+    "visualization",
+    "llm"
+  ],
+  "author": "Chartdown Contributors",
+  "license": "MIT",
+  "dependencies": {
+    "plotly.js": "^2.27.1",
+    "showdown": "^2.1.0"
+  }
+} 

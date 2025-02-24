@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chartdown Demo</title>
+    <link rel="stylesheet" href="./chartdown.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Chartdown Demo</h1>
+        <p>Convert markdown with charts to HTML using plotly and showdown</p>
+    </div>
+    
+    <div class="demo-container">
+        <div class="source">
+            <h2 class="section-title">Markdown Input</h2>
+            <textarea id="source" spellcheck="false"></textarea>
+        </div>
+        <div class="source">
+            <h2 class="section-title">Rendered HTML Output</h2>
+            <div class="markdown-content" id="output"></div>
+        </div>
+    </div>
+
+    <!-- Required libraries -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+    <script src="ChartdownConverter.js"></script>
+    
+    <script>
+        const defaultMarkdown = `# Sample Header
+
+This report demonstrates how language model outputs can be transformed into interactive visualizations using Chartdown.
+
+
+### Market Trends
+
+Analysis of market movements and future projections:
+
+:::chart
+{
+  data: [{
+    type: "scatter",
+    mode: "lines+markers",
+    x: ["2023-01", "2023-03", "2023-06", "2023-09", "2023-12", "2024-03"],
+    y: [100, 120, 150, 140, 180, 190],
+    name: "Stock A"
+  }, {
+    type: "scatter",
+    mode: "lines+markers",
+    x: ["2023-01", "2023-03", "2023-06", "2023-09", "2023-12", "2024-03"],
+    y: [90, 95, 85, 110, 120, 135],
+    name: "Stock B"
+  }],
+  layout: {
+    title: "Market Performance Trends",
+    xaxis: { title: "Date" },
+    yaxis: { title: "Price ($)" }
+  }
+}
+:::
+
+### Sample Cloud Provider Distribution
+
+Current market share analysis of major cloud providers:
+
+:::chart
+{
+  type: "pie",
+  values: [34, 33, 16, 10, 7],
+  labels: ["AWS", "Azure", "Google Cloud", "Alibaba Cloud", "Others"],
+  title: "Cloud Market Share 2024"
+}
+:::
+
+#### Revenue Projections
+
+Quarterly revenue projections for major providers (in billions USD):
+
+| Provider | Q1 2024 | Q2 2024 | Q3 2024 | Q4 2024 |
+|----------|---------|---------|---------|---------|
+| AWS | 21.4 | 22.1 | 23.5 | 24.2 |
+| Azure | 20.8 | 21.7 | 22.9 | 23.8 |
+| Google Cloud | 7.4 | 7.8 | 8.2 | 8.5 |
+| Alibaba Cloud | 4.1 | 4.3 | 4.5 | 4.7 |
+
+## Budget Flow Analysis
+
+Analysis of public financial data showing simplified budget allocation:
+
+### Resource Distribution
+
+This Sankey diagram illustrates the flow between funding sources and spending categories:
+
+:::chart
+{
+  data: [{
+    type: "sankey",
+    orientation: "h",
+    node: {
+      label: ["Income Tax", "Corporate Tax", "Other Revenue", "Healthcare", "Social Security", "Defense", "Other Spending"],
+      color: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f"]
+    },
+    link: {
+      source: [0, 1, 2, 0, 1, 2],
+      target: [3, 4, 5, 6, 6, 6],
+      value: [1200, 800, 600, 900, 700, 1000]
+    }
+  }],
+  layout: {
+    title: "Federal Budget Flow (Billions USD)"
+  }
+}
+:::
+
+## Performance Metrics
+
+Predictive analysis of key performance indicators:
+
+### Sales Forecast
+
+Monthly sales predictions based on historical trends:
+
+:::chart
+{
+  type: "bar",
+  x: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+  y: [20, 14, 23, 18, 25, 31],
+  marker: {
+    color: ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b"]
+  },
+  title: "Projected Monthly Sales 2024"
+}
+:::
+
+---
+
+**Note**: Sample data used for demonstration purposes.`;
+
+        const converter = new ChartdownConverter();
+        const sourceElement = document.getElementById('source');
+        
+        // Set initial content
+        sourceElement.value = defaultMarkdown;
+        
+        // Initial render
+        converter.convert(defaultMarkdown, 'output');
+        
+        // Update on change
+        sourceElement.addEventListener('input', () => {
+            converter.convert(sourceElement.value, 'output');
+        });
+    </script>
+</body>
+</html> 
