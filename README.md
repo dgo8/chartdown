@@ -5,6 +5,7 @@ Convert markdown with chart definitions into interactive visualizations. Built o
 
 ## Run the demo
 python -m http.server 8000
+<img width="1512" alt="Screenshot" src="https://github.com/user-attachments/assets/0217ed87-4a37-431a-be9f-f682698a33e4" />
 
 ## Chart Syntax
 
