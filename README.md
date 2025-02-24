@@ -1,7 +1,5 @@
 # Chartdown
 
-[![npm version](https://badge.fury.io/js/chartdown.svg)](https://badge.fury.io/js/chartdown)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Convert markdown with chart definitions into interactive visualizations. Built on top of Showdown and Plotly.js.
 
